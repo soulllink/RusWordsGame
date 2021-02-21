@@ -1,6 +1,8 @@
 <script>
   export let name;
   import Game from "./Game.svelte";
+  export let title;
+  document.title = title;
 
 
   let stypetip = { show: false };

@@ -2,7 +2,7 @@
 import { onMount } from "svelte";
 
 let data = [];
-let nnumber;
+
 let wdata = "Привет!"
 let answer = { state: false };
 let y = Math.floor(Math.random() * 10820);
@@ -26,11 +26,11 @@ onMount(async () => {
 });
     
 
-async function handleClick() {
+async function handleClick(click) {
 	let word = data[y]
 	
     $: wdata = await word['words'];
-    if(nnumber == word['stype']) { 
+    if(word['stype'] == click) { 
 		answer.state = true;
         //alert("Правильно!");
         y = Math.floor(Math.random() * 10820);
@@ -43,10 +43,6 @@ async function handleClick() {
 		rightwrong.wrong++		
     }
 }  
-
-function clg() {
-	console.log(nnumber);
-}
     
 </script>
 
@@ -82,16 +78,16 @@ function clg() {
 {/if}
 
 <div style="display:grid">
-<button class="mdl-button mdl-js-button" on:click={handleClick} on:click={() => {nnumber = 0}}>Существительное</button>
-<button class="mdl-button mdl-js-button" on:click={handleClick} on:click={() => {nnumber = 1}}>Прилагательное</button>
-<button class="mdl-button mdl-js-button" on:click={handleClick} on:click={() => {nnumber = 2}}>Числительное</button>
-<button class="mdl-button mdl-js-button" on:click={handleClick} on:click={() => {nnumber = 3}}>Местоимение</button>
-<button class="mdl-button mdl-js-button" on:click={handleClick} on:click={() => {nnumber = 4}}>Глагол</button>
-<button class="mdl-button mdl-js-button" on:click={handleClick} on:click={() => {nnumber = 5}}>Наречие</button>
-<button class="mdl-button mdl-js-button" on:click={handleClick} on:click={() => {nnumber = 6}}>Предлог</button>
-<button class="mdl-button mdl-js-button" on:click={handleClick} on:click={() => {nnumber = 7}}>Союз</button>
-<button class="mdl-button mdl-js-button" on:click={handleClick} on:click={() => {nnumber = 8}}>Частица</button>
-<button class="mdl-button mdl-js-button" on:click={handleClick} on:click={() => {nnumber = 9}}>Междометие</button>
+<button class="mdl-button mdl-js-button" on:click={ () => handleClick(0)}>Существительное</button>
+<button class="mdl-button mdl-js-button" on:click={ () => handleClick(1)}>Прилагательное</button>
+<button class="mdl-button mdl-js-button" on:click={ () => handleClick(2)}>Числительное</button>
+<button class="mdl-button mdl-js-button" on:click={ () => handleClick(3)}>Местоимение</button>
+<button class="mdl-button mdl-js-button" on:click={ () => handleClick(4)}>Глагол</button>
+<button class="mdl-button mdl-js-button" on:click={ () => handleClick(5)}>Наречие</button>
+<button class="mdl-button mdl-js-button" on:click={ () => handleClick(6)}>Предлог</button>
+<button class="mdl-button mdl-js-button" on:click={ () => handleClick(7)}>Союз</button>
+<button class="mdl-button mdl-js-button" on:click={ () => handleClick(8)}>Частица</button>
+<button class="mdl-button mdl-js-button" on:click={ () => handleClick(9)}>Междометие</button>
 </div>
 
 
