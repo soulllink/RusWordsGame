@@ -92,9 +92,6 @@ function clg() {
 <button class="mdl-button mdl-js-button" on:click={handleClick} on:click={() => {nnumber = 7}}>Союз</button>
 <button class="mdl-button mdl-js-button" on:click={handleClick} on:click={() => {nnumber = 8}}>Частица</button>
 <button class="mdl-button mdl-js-button" on:click={handleClick} on:click={() => {nnumber = 9}}>Междометие</button>
-<button class="mdl-button mdl-js-button" on:click={handleClick} on:click={() => {nnumber = -1}}>-1</button>
-<button class="mdl-button mdl-js-button" on:click={handleClick} on:click={() => {nnumber = 404}}>404</button>
-<button class="mdl-button mdl-js-button" on:click={clg}>CLGDEBUG</button>
 </div>
 
 
