@@ -5,7 +5,7 @@ let data = [];
 let nnumber;
 let wdata = "Привет!"
 let answer = { state: false };
-let y = Math.floor(Math.random() * 12126);
+let y = Math.floor(Math.random() * 10820);
 let liststype = ["Существительное",
 "Прилагательное",
 "Числительное",
@@ -33,7 +33,7 @@ async function handleClick() {
     if(nnumber == word['stype']) { 
 		answer.state = true;
         //alert("Правильно!");
-        y = Math.floor(Math.random() * 12126);
+        y = Math.floor(Math.random() * 10820);
         $: wdata = await data[y]['words'];
 		rightwrong.right++
     } else {
