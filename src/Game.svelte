@@ -33,13 +33,14 @@ async function handleClick(click) {
     if(word['stype'] == click) { 
 		answer.state = true;
         //alert("Правильно!");
+		$: alertinfo = word['words'] + " - " + liststype[word['stype']]
         y = Math.floor(Math.random() * 10820);
         $: wdata = await data[y]['words'];
 		rightwrong.right++
     } else {
 		answer.state = false;
         //alert("Правильно: " + liststype[word['stype']])
-		$: alertinfo = liststype[word['stype']]
+		$: alertinfo = word['words'] + " - " + liststype[word['stype']]
 		rightwrong.wrong++		
     }
 }  
@@ -47,7 +48,30 @@ async function handleClick(click) {
 </script>
 
 <div class="material-icons mdl-badge mdl-badge--overlap" data-badge="{rightwrong.right}">done</div>
-<div class="material-icons mdl-badge mdl-badge--overlap" data-badge="{rightwrong.wrong}">delete</div>
+<div class="material-icons mdl-badge mdl-badge--overlap" data-badge="{rightwrong.wrong}">clear</div>
+
+{#if answer.state}
+	<span class="mdl-chip">
+    	<span class="mdl-chip__text">Правильно</span>
+	</span>
+	{#if alertinfo != undefined}
+		<span class="mdl-chip mdl-chip--contact">
+			<span class="mdl-chip__contact mdl-color--teal mdl-color-text--white"><i class="material-icons">done</i></span>
+			<span class="mdl-chip__text">{alertinfo}</span>
+		</span>
+	{/if}
+{/if}
+{#if !answer.state}
+	<span class="mdl-chip">
+    	<span class="mdl-chip__text">Неправильно</span>
+	</span>
+	{#if alertinfo != undefined}
+		<span class="mdl-chip mdl-chip--contact">
+			<span class="mdl-chip__contact mdl-color--teal mdl-color-text--white"><i class="material-icons">clear</i></span>
+			<span class="mdl-chip__text">{alertinfo}</span>
+		</span>
+	{/if}
+{/if}
 
 
 {#await wdata}
@@ -60,22 +84,7 @@ async function handleClick(click) {
 
 {/await}
 
-{#if answer.state}
-	<span class="mdl-chip">
-    	<span class="mdl-chip__text">Правильно</span>
-	</span>
-{/if}
-{#if !answer.state}
-	<span class="mdl-chip">
-    	<span class="mdl-chip__text">Неправильно</span>
-	</span>
-	{#if alertinfo != undefined}
-		<span class="mdl-chip mdl-chip--contact">
-			<span class="mdl-chip__contact mdl-color--teal mdl-color-text--white">О</span>
-			<span class="mdl-chip__text">{alertinfo}</span>
-		</span>
-	{/if}
-{/if}
+
 
 <div style="display:grid">
 <button class="mdl-button mdl-js-button" on:click={ () => handleClick(0)}>Существительное</button>

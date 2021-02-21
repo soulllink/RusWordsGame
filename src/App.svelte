@@ -36,7 +36,10 @@
   .mdl-grid.center-items {
   justify-content: center;
   }
-
+  .footer {
+    font-size: 1em;
+    color: #bbbbbb;
+  }
 </style>
 
 <svelte:head>
@@ -115,4 +118,5 @@
 </div>
   
  
+ <p class="footer">RusWords - 2021, <a href="https://github.com/soulllink/RusWordsGame">Github</a>, IvanB</p>
 </main>
