@@ -21,7 +21,7 @@ let alertinfo;
 
 
 onMount(async () => {
-        const res = await fetch('./ruswords.json');
+        const res = await fetch('ruswords.json');
         data = await res.json();
 });
     
